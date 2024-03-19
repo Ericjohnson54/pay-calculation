@@ -1,0 +1,28 @@
+bash
+#!/bin/bash
+
+# Prompt the user to enter employee name, hours worked, and rate per hour
+read -p "Enter employee name: " name
+read -p "Enter hours worked: " hours
+read -p "Enter rate per hour: " rate
+
+# Calculate the basic pay
+basic_pay=$((hours * rate))
+
+# Calculate tax based on basic pay using if-else statement
+if [ $basic_pay -gt 70000 ]; then
+    tax=$((basic_pay * 25 / 100))
+elif [ $basic_pay -ge 15000 ] && [ $basic_pay -le 70000 ]; then
+    tax=$((basic_pay * 15 / 100))
+else
+    tax=0
+fi
+
+# Calculate the net pay
+net_pay=$((basic_pay - tax))
+
+# Display the results
+echo "Employee Name: $name"
+echo "Basic Pay: $basic_pay"
+echo "Tax: $tax"
+echo "Net Pay: $net_pay"
